@@ -1,0 +1,90 @@
+body {
+  background-color: white;
+  color: black;
+  text-align:center;
+}
+
+#primarycontent a:link {
+    color: #009;
+    text-decoration: none;
+}
+
+#primarycontent a:visited {
+    color: #00F;
+    text-decoration: none;
+    /*color: #8d9345; */
+}
+
+#primarycontent a:hover {
+    text-decoration: underline;
+}
+
+#people {
+	list-style-type: none;
+	margin-left: 0px;
+	padding-left: 10px;
+}
+
+#people table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#people td {
+  text-align: center;
+  padding: 0.5vw;
+}
+
+#people img {
+  max-height: 150px;
+  height: 10vw;
+  border-radius: 50%;
+}
+
+#primarycontent {
+  max-width: 1024px;
+  width: expression(document.body.clientWidth > 800? "800px": "auto" );
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+p.footer {
+    font-size: x-small;
+}
+
+#primarycontent h3{
+	border-bottom: 1px solid darkgray;
+	text-align: left;
+    padding: 0 0 0.2em 0.5em;
+    margin: 2em 0 0 0;
+}
+
+.toggle{
+	line-height:1.5em;
+	background: #EAEAEA;
+    border-bottom:1px solid #000;
+	border-top:1px solid #000;
+	cursor:pointer;
+	font-size: 11pt;
+	padding-left:0.8em;
+	font-variant:small-caps;
+}
+
+.toggle:hover{
+	background: #C8DFE1;
+	text-decoration:none;
+}
+
+.toggle a {
+	text-decoration:none;
+	color: black;
+}
+.hiddenDiv{
+	display:none;
+}

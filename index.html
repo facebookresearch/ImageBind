@@ -1,0 +1,199 @@
+<!-- Thanks to url=http://www.cs.cmu.edu/~dfouhey/3DP/index.html -->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="StyleSheet" href="assets/style.css" type="text/css" media="all">
+
+    <title>ImageBind</title>
+    <script type="text/javascript" async="" src="assets/ga.js"></script>
+    <script type="text/javascript">
+    </script>
+
+    <style>
+        table.bordered,
+        th.bordered,
+        td.bordered {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 15px;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <!-- bibliographic tags -->
+    <meta name="citation_title" content="ImageBind: One Embedding Space To Bind Them All" />
+    <meta name="citation_author" content="Girdhar, Rohit" />
+    <meta name="citation_author" content="El-Nouby, Alaa" />
+    <meta name="citation_author" content="Liu, Zhuang" />
+    <meta name="citation_author" content="Singh, Mannat" />
+    <meta name="citation_author" content="Alwala, Kalyan Vasudev" />
+    <meta name="citation_author" content="Joulin, Armand" />
+    <meta name="citation_author" content="Misra, Ishan" />
+    <meta name="citation_publication_date" content="2023" />
+    <meta name="citation_conference_title" content="CVPR" />
+    <meta name="citation_pdf_url" content="https://arxiv.org/abs/" />
+
+    <style type="text/css">
+        #primarycontent h1 {
+            font-variant: small-caps;
+        }
+
+        #primarycontent h3 {}
+
+        #primarycontent teasertext {
+            text-align: center;
+        }
+
+        #primarycontent p {
+            text-align: center;
+        }
+
+        #primarycontent {
+            text-align: justify;
+        }
+
+        #primarycontent p {
+            text-align: justify;
+        }
+
+        #primarycontent p iframe {
+            text-align: center;
+        }
+
+        #avatar {
+            border-radius: 50%;
+        }
+    </style>
+    <script type="text/javascript">
+        function togglevis(elid) {
+            el = document.getElementById(elid);
+            aelid = elid + "a";
+            ael = document.getElementById(aelid);
+            if (el.style.display == 'none') {
+                el.style.display = 'inline-table';
+                ael.innerHTML = "[Hide BibTex]";
+            } else {
+                el.style.display = 'none';
+                ael.innerHTML = "[Show BibTex]";
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div id="primarycontent">
+        <h1 align="center" itemprop="name"><strong>
+                ImageBind: One Embedding Space To Bind Them All
+            </strong></h1>
+
+
+        <table class="results" align="center">
+            <tr>
+                <td align="center">
+                    <img src="assets/teaser.jpeg" width="80%" /></a>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td class="credits" align="justify">
+                    We present ImageBind, an approach to learn a joint embedding across six different modalities - images, text, audio, depth, thermal, and IMU data. We show that all combinations of paired data are not necessary to train such a joint embedding, and only image-paired data is sufficient to bind the modalities together. ImageBind can leverage recent large scale vision-language models, and extends their zero-shot capabilities to new modalities just by using their natural pairing with images. It enables novel emergent applications 'out-of-the-box' including cross-modal retrieval, composing modalities with arithmetic, cross-modal detection and generation. The emergent capabilities improve with the strength of the image encoder and we set a new state-of-the-art on emergent zero-shot recognition tasks across modalities, outperforming specialist supervised models. Finally, we show strong few-shot recognition results outperforming prior work, and that ImageBind serves as a new way to evaluate vision models for visual and non-visual tasks.
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+
+
+
+        <h3>People</h3>
+
+        <table id="people" style="margin:auto;">
+            <tr>
+                <td></td> <!-- For some reason it scales up the first td.. so adding a dummy td -->
+                <td>
+                    <img src="assets/authors/rohit.jpg" /><br />
+                    <a href="http://rohitgirdhar.github.io/" target="_blank">Rohit Girdhar</a>
+                </td>
+                <td>
+                    <img src="assets/authors/alaa.png" /><br />
+                    <a href="https://aelnouby.github.io/" target="_blank">Alaaeldin El-Nouby</a>
+                </td>
+                <td>
+                    <img src="assets/authors/zhuang.png" /><br />
+                    <a href="https://liuzhuang13.github.io/" target="_blank">Zhuang Liu</a>
+                </td>
+                <td>
+                    <img src="assets/authors/mannat.jpeg" /><br />
+                    <a href="https://scholar.google.com/citations?user=QOO8OCcAAAAJ&hl=en" target="_blank">Mannat
+                        Singh</a>
+                </td>
+                <td>
+                    <img src="assets/authors/kalyan.jpg" /><br />
+                    <a href="https://scholar.google.co.in/citations?user=m34oaWEAAAAJ&hl=en" target="_blank">Kalyan Vasudev Alwala</a>
+                </td>
+                <td>
+                    <img src="assets/authors/armand.jpeg" /><br />
+                    <a href="https://ai.facebook.com/people/armand-joulin/" target="_blank">Armand Joulin</a>
+                </td>
+                <td>
+                    <img src="assets/authors/ishan.jpeg" /><br />
+                    <a href="https://imisra.github.io/" target="_blank">Ishan Misra</a>
+                </td>
+            </tr>
+        </table>
+
+
+        <h3>Paper</h3>
+        <table class="center">
+            <tr></tr>
+            <tr>
+                <td>
+                    <a href="https://arxiv.org/abs/"><img style="box-shadow: 5px 5px 2px #888888; margin: 10px"
+                            src="assets/paper-screenshot.png" width="150px" /></a>
+                </td>
+                <td></td>
+                <td>
+                    R. Girdhar, A. El-Nouby, Z. Liu, M. Singh, K. V. Alwala, A. Joulin and I. Misra<br />
+                    <a href="https://arxiv.org/abs/">ImageBind: One Embedding Space To Bind Them All</a><br />
+                    IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023 <b>(Highlighted Presentation)</b> <br />
+                    [<a href="https://arxiv.org/abs/">arXiv</a>]
+                    [<a href="javascript:togglevis('girdhar2023imagebind')" id="bibtex">BibTex</a>] <br /> <br />
+        </table>
+
+        </table>
+
+
+
+        <table class="bibtex" style="display:none" id="girdhar2023imagebind">
+            <tr>
+                <td>
+                    <pre>
+@inproceedings{girdhar2023imagebind,
+  title={{ImageBind: One Embedding Space To Bind Them All}},
+  author={Girdhar, Rohit and El-Nouby, Alaaeldin and Liu, Zhuang and Singh, Mannat and Alwala, Kalyan Vasudev and Joulin, Armand and Misra, Ishan},
+  booktitle={CVPR},
+  year={2023}
+}
+
+</pre>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+</body>
+
+</html>
