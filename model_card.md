@@ -40,7 +40,7 @@ The text encoder is likely to work only on English language text because of the 
 <!-- This section is meant to convey both technical and sociotechnical limitations. -->
 Open-domain joint embedding models are prone to producing specific biases, e.g., study from [CLIP](https://github.com/openai/CLIP/blob/main/model-card.md#bias-and-fairness).
 Since our model uses such models as initialization, it will exhibit such biases too.
-Moreover, for learning joint embeddings for other modalities such as audio, ther mal, depth, and IMU we leverage datasets that are relatively small. These joint embeddings are thus limited to the concepts present in the datasets. For example, the thermal datasets we used are limited to outdoor street scenes, while the depth datasets are limited to indoor scenes.
+Moreover, for learning joint embeddings for other modalities such as audio, thermal, depth, and IMU we leverage datasets that are relatively small. These joint embeddings are thus limited to the concepts present in the datasets. For example, the thermal datasets we used are limited to outdoor street scenes, while the depth datasets are limited to indoor scenes.
 
 
 
