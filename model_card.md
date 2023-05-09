@@ -13,7 +13,7 @@ Multimodal joint embedding model for image/video, text, audio, depth, IMU, and t
 - **Developed by:** Meta AI
 - **Model type:** Multimodal model
 - **Language(s) (NLP):** en
-- **License:** cc-by-4.0
+- **License:** CC BY-NC-SA 4.0
 - **Resources for more information:**
     - [GitHub Repo](https://github.com/facebookresearch/ImageBind)
 
