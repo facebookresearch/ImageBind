@@ -61,6 +61,13 @@ conda activate imagebind
 pip install -r requirements.txt
 ```
 
+For windows users, you might need to install `soundfile` for reading/writing audio files. (Thanks @congyue1977)
+
+```
+pip install soundfile
+```
+
+
 Extract and compare features across modalities (e.g. Image, Text and Audio).
 
 ```python
