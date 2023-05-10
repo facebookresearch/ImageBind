@@ -9,3 +9,5 @@ regex
 einops
 fvcore
 decord==0.6.0
+iopath
+numpy
