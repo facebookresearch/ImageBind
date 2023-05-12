@@ -10,10 +10,9 @@ import html
 import io
 import math
 from functools import lru_cache
-from typing import Callable, List, Optional
+from typing import Callable, List, Optional, Tuple
 
 import ftfy
-
 import numpy as np
 import regex as re
 import torch
@@ -21,7 +20,7 @@ import torch.nn as nn
 from iopath.common.file_io import g_pathmgr
 from timm.models.layers import trunc_normal_
 
-from models.helpers import cast_if_src_dtype, VerboseNNModule
+from models.helpers import VerboseNNModule, cast_if_src_dtype
 
 
 def get_sinusoid_encoding_table(n_position, d_hid):
@@ -197,10 +196,10 @@ class RGBDTPreprocessor(VerboseNNModule):
     def __init__(
         self,
         rgbt_stem: PatchEmbedGeneric,
-        depth_stem: PatchEmbedGeneric,
-        img_size: List = (3, 224, 224),
+        depth_stem: Optional[PatchEmbedGeneric],
+        img_size: Tuple = (3, 224, 224),
         num_cls_tokens: int = 1,
-        pos_embed_fn: Callable = None,
+        pos_embed_fn: Optional[Callable] = None,
         use_type_embed: bool = False,
         init_param_style: str = "openclip",
     ) -> None:
@@ -502,9 +501,9 @@ class SimpleTokenizer(object):
 
         with g_pathmgr.open(bpe_path, "rb") as fh:
             bpe_bytes = io.BytesIO(fh.read())
-            merges = gzip.open(bpe_bytes).read().decode("utf-8").split("\n")
+            merges: List[str] = gzip.open(bpe_bytes).read().decode("utf-8").split("\n")
         merges = merges[1 : 49152 - 256 - 2 + 1]
-        merges = [tuple(merge.split()) for merge in merges]
+        merges: List[Tuple[str, ...]] = [tuple(merge.split()) for merge in merges]
         vocab = list(bytes_to_unicode().values())
         vocab = vocab + [v + "</w>" for v in vocab]
         for merge in merges:
@@ -610,13 +609,12 @@ class IMUPreprocessor(VerboseNNModule):
         kernel_size: int,
         imu_stem: PatchEmbedGeneric,
         embed_dim: int,
-        img_size: List = (6, 2000),
+        img_size: Tuple = (6, 2000),
         num_cls_tokens: int = 1,
-        pos_embed_fn: Callable = None,
+        pos_embed_fn: Optional[Callable] = None,
         init_param_style: str = "openclip",
     ) -> None:
         super().__init__()
-        stem = imu_stem
         self.imu_stem = imu_stem
         self.embed_dim = embed_dim
         self.use_pos_embed = pos_embed_fn is not None

@@ -5,21 +5,20 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
+import logging
 import math
 
 import torch
 import torch.nn as nn
 import torchaudio
-import logging
-
-from models.multimodal_preprocessors import SimpleTokenizer
 from PIL import Image
 from pytorchvideo import transforms as pv_transforms
 from pytorchvideo.data.clip_sampling import ConstantClipsPerVideoSampler
 from pytorchvideo.data.encoded_video import EncodedVideo
-
 from torchvision import transforms
 from torchvision.transforms._transforms_video import NormalizeVideo
+
+from models.multimodal_preprocessors import SimpleTokenizer
 
 DEFAULT_AUDIO_FRAME_SHIFT_MS = 10  # in milliseconds
 
@@ -160,17 +159,6 @@ def load_and_transform_audio_data(
         audio_outputs.append(all_clips)
 
     return torch.stack(audio_outputs, dim=0)
-
-
-def get_clip_timepoints(clip_sampler, duration):
-    # Read out all clips in this video
-    all_clips_timepoints = []
-    is_last_clip = False
-    end = 0.0
-    while not is_last_clip:
-        start, end, _, _, is_last_clip = clip_sampler(end, duration, annotation=None)
-        all_clips_timepoints.append((start, end))
-    return all_clips_timepoints
 
 
 def crop_boxes(boxes, x_offset, y_offset):

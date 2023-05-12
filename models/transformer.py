@@ -11,16 +11,12 @@
 # and https://github.com/facebookresearch/vissl/blob/main/vissl/models/trunks/vision_transformer.py
 
 
-import copy
-import fnmatch
-import logging
 from functools import partial
-from typing import Callable, List
+from typing import Callable, List, Optional
 
 import torch
 import torch.nn as nn
 import torch.utils.checkpoint as checkpoint
-
 from timm.models.layers import DropPath, trunc_normal_
 
 
@@ -116,7 +112,7 @@ class BlockWithMasking(nn.Module):
         norm_layer: Callable = nn.LayerNorm,
         ffn_dropout_rate: float = 0.0,
         drop_path: float = 0.0,
-        layer_scale_type: str = None,
+        layer_scale_type: Optional[str] = None,
         layer_scale_init_value: float = 1e-4,
     ):
         super().__init__()
@@ -184,14 +180,14 @@ class SimpleTransformer(nn.Module):
         embed_dim: int,
         num_blocks: int,
         block: Callable = BlockWithMasking,
-        pre_transformer_layer: Callable = None,
-        post_transformer_layer: Callable = None,
+        pre_transformer_layer: Optional[Callable] = None,
+        post_transformer_layer: Optional[Callable] = None,
         drop_path_rate: float = 0.0,
         drop_path_type: str = "progressive",
         norm_layer: Callable = _LAYER_NORM,
         mlp_ratio: int = 4,
         ffn_dropout_rate: float = 0.0,
-        layer_scale_type: str = None,  # from cait; possible values are None, "per_channel", "scalar"
+        layer_scale_type: Optional[str] = None,  # from cait; possible values are None, "per_channel", "scalar"
         layer_scale_init_value: float = 1e-4,  # from cait; float
         weight_init_style: str = "jax",  # possible values jax or pytorch
     ):
@@ -252,7 +248,7 @@ class SimpleTransformer(nn.Module):
         attn_mask: torch.Tensor = None,
         use_checkpoint: bool = False,
         checkpoint_every_n: int = 1,
-        checkpoint_blk_ids: List[int] = None,
+        checkpoint_blk_ids: Optional[List[int]] = None,
     ):
         """
         Inputs
