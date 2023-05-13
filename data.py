@@ -175,9 +175,9 @@ def get_clip_timepoints(clip_sampler, duration):
 
 def crop_boxes(boxes, x_offset, y_offset):
     """
-    Peform crop on the bounding boxes given the offsets.
+    Perform crop on the bounding boxes given the offsets.
     Args:
-        boxes (ndarray or None): bounding boxes to peform crop. The dimension
+        boxes (ndarray or None): bounding boxes to perform crop. The dimension
             is `num boxes` x 4.
         x_offset (int): cropping offset in the x axis.
         y_offset (int): cropping offset in the y axis.
