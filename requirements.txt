@@ -11,3 +11,7 @@ fvcore
 decord==0.6.0
 iopath
 numpy
+matplotlib
+types-regex
+mayavi
+cartopy
