@@ -7,7 +7,7 @@ from ImageBind.models.imagebind_model import ModalityType
 import ImageBind.data as data
 
 args = argparse.ArgumentParser()
-args.add_argument("-d") # Directory of the embedded dataset
+args.add_argument("-d") # Directory of the dataset
 args.add_argument("-i") # Item to find the similarities with
 args.add_argument("-m") # Model path
 args.add_argument("-n") # Top N items to return
