@@ -1,13 +1,10 @@
-# C:/valtech/Scripts/python.exe -W ignore c:/CODE/others/ranker/rank.py -d ImageBind/.assets -i ImageBind/.assets/bird_audio.wav -n 3 > output.txt
+# python c:/.../ImageBind/ranker.py -d ImageBind/.assets -i ImageBind/.assets/bird_audio.wav -n 3 > output.txt
 
 import argparse, os, pathlib
-# from deep.encoding import Embeddings
 import torch
 from ImageBind.models import imagebind_model
 from ImageBind.models.imagebind_model import ModalityType
 import ImageBind.data as data
-import warnings
-warnings.filterwarnings("ignore")
 
 args = argparse.ArgumentParser()
 args.add_argument("-d") # Directory of the embedded dataset
@@ -15,16 +12,16 @@ args.add_argument("-i") # Item to find the similarities with
 args.add_argument("-m") # Model path
 args.add_argument("-n") # Top N items to return
 args = args.parse_args()
-# print(args.n, type(args.n))
+
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
-# exit()
+
 modalities = {
     ".wav" : ModalityType.AUDIO,
     ".mp3" : ModalityType.AUDIO,
     ".png" : ModalityType.VISION,
     ".jpeg" : ModalityType.VISION,
     ".jpg" : ModalityType.VISION,
-    # ".mp4" : ModalityType.VIDEO ?,
+    ".mp4" : ModalityType.VISION,
     ".txt": ModalityType.TEXT
 }
 
@@ -95,4 +92,3 @@ def get_top_files(dictionary, N):
     return top_strings
 
 print(*get_top_files(scores, int(args.n) if args.n is not None else 5), sep="\n")
-
