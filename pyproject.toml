@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "imagebind"
+version = "0.1.0"
+description = "Multimodal joint embedding model for image/video, text, audio, depth, IMU, and thermal images. Input any of the six modalities and get the same sized embedding that can be used for cross-modal and multimodal tasks."
+authors = ["Your Name <you@example.com>"]
+license = "Attribution-NonCommercial-ShareAlike 4.0 International"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+torch = "1.13.0"
+torchvision = "0.14.0"
+torchaudio = "0.13.0"
+pytorchvideo = {git = "https://github.com/facebookresearch/pytorchvideo.git", rev = "28fe037d212663c6a24f373b94cc5d478c8c1a1d"}
+timm = "0.6.7"
+ftfy = "^6.1.1"
+regex = "^2023.5.5"
+einops = "^0.6.1"
+fvcore = "^0.1.5.post20221221"
+decord = "0.6.0"
+iopath = "^0.1.10"
+numpy = "^1.24.3"
+matplotlib = "^3.7.1"
+types-regex = "^2023.5.5.0"
+mayavi = "^4.8.1"
+Cartopy = "^0.21.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
