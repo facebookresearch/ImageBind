@@ -5,6 +5,7 @@ description = "Multimodal joint embedding model for image/video, text, audio, de
 authors = ["Your Name <you@example.com>"]
 license = "Attribution-NonCommercial-ShareAlike 4.0 International"
 readme = "README.md"
+packages = [{ include = "*" }]
 
 [tool.poetry.dependencies]
 python = "^3.8"
