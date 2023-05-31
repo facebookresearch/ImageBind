@@ -79,7 +79,7 @@ def load_and_transform_vision_data(image_paths, device):
     if image_paths is None:
         return None
 
-    image_ouputs = []
+    image_outputs = []
     for image_path in image_paths:
         data_transform = transforms.Compose(
             [
@@ -98,8 +98,8 @@ def load_and_transform_vision_data(image_paths, device):
             image = Image.open(fopen).convert("RGB")
 
         image = data_transform(image).to(device)
-        image_ouputs.append(image)
-    return torch.stack(image_ouputs, dim=0)
+        image_outputs.append(image)
+    return torch.stack(image_outputs, dim=0)
 
 
 def load_and_transform_text(text, device):
