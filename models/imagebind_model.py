@@ -476,7 +476,7 @@ class ImageBindModel(nn.Module):
         return outputs
 
 
-def imagebind_huge(pretrained=False):
+def imagebind_huge(pretrained=False, cache_dir=None):
     model = ImageBindModel(
         vision_embed_dim=1280,
         vision_num_blocks=32,
@@ -490,17 +490,20 @@ def imagebind_huge(pretrained=False):
     )
 
     if pretrained:
-        if not os.path.exists(".checkpoints/imagebind_huge.pth"):
+        cache_dir = cache_dir if cache_dir is not None else ".checkpoints"
+        ckpt_path = "{}/imagebind_huge.pth".format(cache_dir)
+        
+        if not os.path.exists(ckpt_path):
             print(
-                "Downloading imagebind weights to .checkpoints/imagebind_huge.pth ..."
+                "Downloading imagebind weights to {} ...".format(ckpt_path)
             )
-            os.makedirs(".checkpoints", exist_ok=True)
+            os.makedirs(cache_dir, exist_ok=True)
             torch.hub.download_url_to_file(
                 "https://dl.fbaipublicfiles.com/imagebind/imagebind_huge.pth",
-                ".checkpoints/imagebind_huge.pth",
+                ckpt_path,
                 progress=True,
             )
 
-        model.load_state_dict(torch.load(".checkpoints/imagebind_huge.pth"))
+        model.load_state_dict(torch.load(ckpt_path))
 
     return model
