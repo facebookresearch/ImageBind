@@ -20,7 +20,7 @@ import torch.nn as nn
 from iopath.common.file_io import g_pathmgr
 from timm.models.layers import trunc_normal_
 
-from models.helpers import VerboseNNModule, cast_if_src_dtype
+from imagebind.models.helpers import VerboseNNModule, cast_if_src_dtype
 
 
 def get_sinusoid_encoding_table(n_position, d_hid):
