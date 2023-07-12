@@ -1,4 +1,3 @@
---extra-index-url https://download.pytorch.org/whl/cu113
 torch==1.13.0
 torchvision==0.14.0
 torchaudio==0.13.0
@@ -10,7 +9,7 @@ einops
 fvcore
 decord==0.6.0
 iopath
-numpy
+numpy>=1.19
 matplotlib
 types-regex
 mayavi
