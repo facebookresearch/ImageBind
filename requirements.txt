@@ -7,7 +7,7 @@ ftfy
 regex
 einops
 fvcore
-decord==0.6.0
+eva-decord==0.6.1
 iopath
 numpy>=1.19
 matplotlib
