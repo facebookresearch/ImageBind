@@ -58,7 +58,7 @@ Install pytorch 1.13+ and other 3rd party dependencies.
 conda create --name imagebind python=3.8 -y
 conda activate imagebind
 
-pip install -r requirements.txt
+pip install .
 ```
 
 For windows users, you might need to install `soundfile` for reading/writing audio files. (Thanks @congyue1977)
@@ -71,10 +71,10 @@ pip install soundfile
 Extract and compare features across modalities (e.g. Image, Text and Audio).
 
 ```python
-import data
+from imagebind import data
 import torch
-from models import imagebind_model
-from models.imagebind_model import ModalityType
+from imagebind.models import imagebind_model
+from imagebind.models.imagebind_model import ModalityType
 
 text_list=["A dog.", "A car", "A bird"]
 image_paths=[".assets/dog_image.jpg", ".assets/car_image.jpg", ".assets/bird_image.jpg"]
