@@ -52,13 +52,6 @@ Emergent zero-shot classification performance.
 
 ## Usage
 
-Install libgeos package. For example on ubuntu you can run
-
-```sh
-sudo apt-get update
-sudo apt-get install libgeos-dev
-```
-
 Install pytorch 1.13+ and other 3rd party dependencies.
 
 ```shell
