@@ -7,6 +7,7 @@ setup(
     name='imagebind',
     version='0.1.0',
     packages=find_packages(),
+    include_package_data=True,
     description='A brief description of the package',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
