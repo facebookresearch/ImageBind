@@ -7,6 +7,7 @@
 
 import logging
 import math
+import pkg_resources
 
 import torch
 import torch.nn as nn
@@ -22,6 +23,7 @@ from imagebind.models.multimodal_preprocessors import SimpleTokenizer
 
 DEFAULT_AUDIO_FRAME_SHIFT_MS = 10  # in milliseconds
 
+BPE_PACKAGE = "imagebind"
 BPE_PATH = "bpe/bpe_simple_vocab_16e6.txt.gz"
 
 
@@ -107,7 +109,8 @@ def load_and_transform_vision_data(image_paths, device):
 def load_and_transform_text(text, device):
     if text is None:
         return None
-    tokenizer = SimpleTokenizer(bpe_path=BPE_PATH)
+    bpe_path = pkg_resources.resource_filename(BPE_PACKAGE, BPE_PATH)
+    tokenizer = SimpleTokenizer(bpe_path=bpe_path)
     tokens = [tokenizer(t).unsqueeze(0).to(device) for t in text]
     tokens = torch.cat(tokens, dim=0)
     return tokens
