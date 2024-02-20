@@ -3,3 +3,4 @@
 .DS_Store
 .env
 .gitignore
+.imagebind.egg-info

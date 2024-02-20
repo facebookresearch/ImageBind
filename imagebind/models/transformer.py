@@ -187,7 +187,9 @@ class SimpleTransformer(nn.Module):
         norm_layer: Callable = _LAYER_NORM,
         mlp_ratio: int = 4,
         ffn_dropout_rate: float = 0.0,
-        layer_scale_type: Optional[str] = None,  # from cait; possible values are None, "per_channel", "scalar"
+        layer_scale_type: Optional[
+            str
+        ] = None,  # from cait; possible values are None, "per_channel", "scalar"
         layer_scale_init_value: float = 1e-4,  # from cait; float
         weight_init_style: str = "jax",  # possible values jax or pytorch
     ):

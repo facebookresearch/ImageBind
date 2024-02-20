@@ -13,15 +13,23 @@ from types import SimpleNamespace
 import torch
 import torch.nn as nn
 
-from imagebind.models.helpers import (EinOpsRearrange, LearnableLogitScaling, Normalize,
-                            SelectElement, SelectEOSAndProject)
-from imagebind.models.multimodal_preprocessors import (AudioPreprocessor,
-                                             IMUPreprocessor, PadIm2Video,
-                                             PatchEmbedGeneric,
-                                             RGBDTPreprocessor,
-                                             SpatioTemporalPosEmbeddingHelper,
-                                             TextPreprocessor,
-                                             ThermalPreprocessor)
+from imagebind.models.helpers import (
+    EinOpsRearrange,
+    LearnableLogitScaling,
+    Normalize,
+    SelectElement,
+    SelectEOSAndProject,
+)
+from imagebind.models.multimodal_preprocessors import (
+    AudioPreprocessor,
+    IMUPreprocessor,
+    PadIm2Video,
+    PatchEmbedGeneric,
+    RGBDTPreprocessor,
+    SpatioTemporalPosEmbeddingHelper,
+    TextPreprocessor,
+    ThermalPreprocessor,
+)
 from imagebind.models.transformer import MultiheadAttention, SimpleTransformer
 
 ModalityType = SimpleNamespace(
@@ -493,12 +501,13 @@ def imagebind_huge(pretrained=False):
         cache_dir = os.path.expanduser("~/.cache/imagebind_checkpoints")
         if not os.path.exists("%s/imagebind_huge.pth" % (cache_dir)):
             print(
-                "Downloading imagebind weights to %s/imagebind_huge.pth ..." % (cache_dir)
+                "Downloading imagebind weights to %s/imagebind_huge.pth ..."
+                % (cache_dir)
             )
             os.makedirs(cache_dir, exist_ok=True)
             torch.hub.download_url_to_file(
                 "https://dl.fbaipublicfiles.com/imagebind/imagebind_huge.pth",
-                "%s/imagebind_huge.pth" % (cache_dir), 
+                "%s/imagebind_huge.pth" % (cache_dir),
                 progress=True,
             )
 
