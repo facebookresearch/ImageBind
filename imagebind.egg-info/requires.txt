@@ -1,0 +1,16 @@
+torch==1.13.0
+torchvision==0.14.0
+torchaudio==0.13.0
+pytorchvideo@ git+https://github.com/facebookresearch/pytorchvideo.git@28fe037d212663c6a24f373b94cc5d478c8c1a1d
+timm==0.6.7
+ftfy
+regex
+einops
+fvcore
+eva-decord==0.6.1
+iopath
+numpy>=1.19
+matplotlib
+types-regex
+mayavi
+cartopy
