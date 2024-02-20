@@ -11,7 +11,7 @@ setup(
     description="A brief description of the package",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/facebookresearch/ImageBind",
+    url="https://github.com/raghavdixit99/ImageBind",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
