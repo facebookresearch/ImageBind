@@ -24,6 +24,8 @@ from imagebind.models.multimodal_preprocessors import (AudioPreprocessor,
                                              ThermalPreprocessor)
 from imagebind.models.transformer import MultiheadAttention, SimpleTransformer
 
+from huggingface_hub import PyTorchModelHubMixin
+
 ModalityType = SimpleNamespace(
     VISION="vision",
     TEXT="text",
@@ -34,7 +36,7 @@ ModalityType = SimpleNamespace(
 )
 
 
-class ImageBindModel(nn.Module):
+class ImageBindModel(nn.Module, PyTorchModelHubMixin):
     def __init__(
         self,
         video_frames=2,
