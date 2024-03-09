@@ -73,8 +73,7 @@ Extract and compare features across modalities (e.g. Image, Text and Audio).
 ```python
 from imagebind import data
 import torch
-from imagebind.models import imagebind_model
-from imagebind.models.imagebind_model import ModalityType
+from imagebind.models.imagebind_model import ImageBindModel, ModalityType
 
 text_list=["A dog.", "A car", "A bird"]
 image_paths=[".assets/dog_image.jpg", ".assets/car_image.jpg", ".assets/bird_image.jpg"]
@@ -83,7 +82,7 @@ audio_paths=[".assets/dog_audio.wav", ".assets/car_audio.wav", ".assets/bird_aud
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 # Instantiate model
-model = imagebind_model.imagebind_huge(pretrained=True)
+model = ImageBindModel.from_pretrained("facebook/imagebind-huge")
 model.eval()
 model.to(device)
 
