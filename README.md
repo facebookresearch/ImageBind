@@ -83,7 +83,6 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 # Instantiate model
 model = ImageBindModel.from_pretrained("facebook/imagebind-huge")
-model.eval()
 model.to(device)
 
 # Load data
