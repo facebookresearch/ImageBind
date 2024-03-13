@@ -1,0 +1,2 @@
+include imagebind/bpe/*
+include requirements.txt

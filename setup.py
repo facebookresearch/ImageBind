@@ -1,20 +1,22 @@
 from setuptools import setup, find_packages
 
-with open('requirements.txt') as f:
+with open("requirements.txt") as f:
     required = f.read().splitlines()
 
 setup(
-    name='imagebind',
-    version='0.1.0',
+    name="imagebind-packaged",
+    version="0.1.2",
+    author='Raghav Dixit',
     packages=find_packages(),
-    description='A brief description of the package',
-    long_description=open('README.md').read(),
+    include_package_data=True,
+    description="Updated version of Imagebind package with bug fixes.",
+    long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url='https://github.com/facebookresearch/ImageBind',
+    url="https://github.com/raghavdixit99/ImageBind",
     classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International',
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
     ],
     install_requires=required,
-    dependency_links=['https://download.pytorch.org/whl/cu113'],
+    dependency_links=["https://download.pytorch.org/whl/cu113"],
 )
