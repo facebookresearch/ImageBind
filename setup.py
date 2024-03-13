@@ -6,6 +6,7 @@ with open("requirements.txt") as f:
 setup(
     name="imagebind-package",
     version="0.1.1",
+    author='Raghav Dixit'
     packages=find_packages(),
     include_package_data=True,
     description="Updated version of Imagebind package with bug fixes.",
