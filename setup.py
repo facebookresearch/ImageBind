@@ -4,11 +4,11 @@ with open("requirements.txt") as f:
     required = f.read().splitlines()
 
 setup(
-    name="imagebind",
-    version="0.1.0",
+    name="imagebind-package",
+    version="0.1.1",
     packages=find_packages(),
     include_package_data=True,
-    description="A brief description of the package",
+    description="Updated version of Imagebind package with bug fixes.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/raghavdixit99/ImageBind",
