@@ -15,7 +15,7 @@ setup(
     url="https://github.com/raghavdixit99/ImageBind",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+        "License :: OSI Approved :: MIT License",
     ],
     install_requires=required,
     dependency_links=["https://download.pytorch.org/whl/cu113"],
