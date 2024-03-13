@@ -4,8 +4,8 @@ with open("requirements.txt") as f:
     required = f.read().splitlines()
 
 setup(
-    name="imagebind-package",
-    version="0.1.1",
+    name="imagebind-packaged",
+    version="0.1.2",
     author='Raghav Dixit',
     packages=find_packages(),
     include_package_data=True,
