@@ -8,7 +8,7 @@ setup(
     version='0.1.0',
     packages=find_packages(),
     description='A brief description of the package',
-    long_description=open('README.md').read(),
+    long_description=open('README.md', encoding='utf-8').read(),
     long_description_content_type="text/markdown",
     url='https://github.com/facebookresearch/ImageBind',
     classifiers=[
