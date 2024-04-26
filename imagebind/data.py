@@ -7,11 +7,17 @@
 
 import logging
 import math
+import sys
 
 import torch
 import torch.nn as nn
 import torchaudio
 from PIL import Image
+
+# hack to work around old pytorchvideo code, for torch v2
+import torchvision.transforms.functional as F_t
+sys.modules["torchvision.transforms.functional_tensor"] = F_t
+
 from pytorchvideo import transforms as pv_transforms
 from pytorchvideo.data.clip_sampling import ConstantClipsPerVideoSampler
 from pytorchvideo.data.encoded_video import EncodedVideo
