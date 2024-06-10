@@ -1,3 +1,8 @@
 **__pycache__
 .vscode
+.idea/
+.python-version
+build/
+imagebind.egg-info
 .DS_Store
+venv/
