@@ -1,6 +1,6 @@
 torch==1.13.1
-torchvision==0.14.0
-torchaudio==0.13.0
+torchvision  # because torch version already specific, the right torchvision will be derived automatically
+torchaudio  # because torch version already specific, the right torchaudio will be derived automatically
 pytorchvideo @ git+https://github.com/facebookresearch/pytorchvideo.git@28fe037d212663c6a24f373b94cc5d478c8c1a1d
 timm==0.6.7
 ftfy
