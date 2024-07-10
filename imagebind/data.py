@@ -7,6 +7,7 @@
 
 import logging
 import math
+import pkg_resources
 
 import torch
 import torch.nn as nn
@@ -22,7 +23,11 @@ from imagebind.models.multimodal_preprocessors import SimpleTokenizer
 
 DEFAULT_AUDIO_FRAME_SHIFT_MS = 10  # in milliseconds
 
-BPE_PATH = "bpe/bpe_simple_vocab_16e6.txt.gz"
+
+def return_bpe_path():
+    return pkg_resources.resource_filename(
+        "imagebind", "bpe/bpe_simple_vocab_16e6.txt.gz"
+    )
 
 
 def waveform2melspec(waveform, sample_rate, num_mel_bins, target_length):
@@ -83,9 +88,7 @@ def load_and_transform_vision_data(image_paths, device):
 
     data_transform = transforms.Compose(
         [
-            transforms.Resize(
-                224, interpolation=transforms.InterpolationMode.BICUBIC
-            ),
+            transforms.Resize(224, interpolation=transforms.InterpolationMode.BICUBIC),
             transforms.CenterCrop(224),
             transforms.ToTensor(),
             transforms.Normalize(
@@ -94,7 +97,7 @@ def load_and_transform_vision_data(image_paths, device):
             ),
         ]
     )
-    
+
     for image_path in image_paths:
         with open(image_path, "rb") as fopen:
             image = Image.open(fopen).convert("RGB")
@@ -107,7 +110,7 @@ def load_and_transform_vision_data(image_paths, device):
 def load_and_transform_text(text, device):
     if text is None:
         return None
-    tokenizer = SimpleTokenizer(bpe_path=BPE_PATH)
+    tokenizer = SimpleTokenizer(bpe_path=return_bpe_path())
     tokens = [tokenizer(t).unsqueeze(0).to(device) for t in text]
     tokens = torch.cat(tokens, dim=0)
     return tokens
