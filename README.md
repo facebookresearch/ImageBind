@@ -55,7 +55,7 @@ Emergent zero-shot classification performance.
 Install pytorch 1.13+ and other 3rd party dependencies.
 
 ```shell
-conda create --name imagebind python=3.8 -y
+conda create --name imagebind python=3.10 -y
 conda activate imagebind
 
 pip install .
