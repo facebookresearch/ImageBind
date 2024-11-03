@@ -18,7 +18,7 @@ import regex as re
 import torch
 import torch.nn as nn
 from iopath.common.file_io import g_pathmgr
-from timm.models.layers import trunc_normal_
+from timm.layers import trunc_normal_
 
 from imagebind.models.helpers import VerboseNNModule, cast_if_src_dtype
 
