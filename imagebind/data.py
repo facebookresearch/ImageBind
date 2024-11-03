@@ -13,7 +13,6 @@ import torch
 import torch.nn as nn
 import torchaudio
 from PIL import Image
-from pytorchvideo import transforms as pv_transforms
 from pytorchvideo.data.clip_sampling import ConstantClipsPerVideoSampler
 from pytorchvideo.data.encoded_video import EncodedVideo
 from torchvision import transforms
@@ -341,3 +340,27 @@ def load_and_transform_video_data(
         video_outputs.append(all_video)
 
     return torch.stack(video_outputs, dim=0).to(device)
+
+class UniformTemporalSubsample(nn.Module):
+    """
+    ``nn.Module`` wrapper for ``pytorchvideo.transforms.functional.uniform_temporal_subsample``.
+    """
+
+    def __init__(self, num_samples: int, temporal_dim: int = -3):
+        """
+        Args:
+            num_samples (int): The number of equispaced samples to be selected
+            temporal_dim (int): dimension of temporal to perform temporal subsample.
+        """
+        super().__init__()
+        self._num_samples = num_samples
+        self._temporal_dim = temporal_dim
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """
+        Args:
+            x (torch.Tensor): video tensor with shape (C, T, H, W).
+        """
+        return pytorchvideo.transforms.functional.uniform_temporal_subsample(
+            x, self._num_samples, self._temporal_dim
+        )
