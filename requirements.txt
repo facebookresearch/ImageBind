@@ -1,15 +1,15 @@
-torch==1.13.1
+torch
 torchvision  # because torch version already specific, the right torchvision will be derived automatically
 torchaudio  # because torch version already specific, the right torchaudio will be derived automatically
 pytorchvideo @ git+https://github.com/facebookresearch/pytorchvideo.git@28fe037d212663c6a24f373b94cc5d478c8c1a1d
-timm==0.6.7
+timm
 ftfy
 regex
 einops
 fvcore
-eva-decord==0.6.1
+eva-decord
 iopath
-numpy>=1.19
+numpy
 matplotlib
 types-regex
 mayavi
