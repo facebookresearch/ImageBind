@@ -52,7 +52,7 @@ Emergent zero-shot classification performance.
 
 ## Usage
 
-Install pytorch 1.13+ and other 3rd party dependencies.
+Install pytorch 2.0+ and other 3rd party dependencies.
 
 ```shell
 conda create --name imagebind python=3.10 -y
