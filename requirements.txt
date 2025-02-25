@@ -1,7 +1,7 @@
-torch==1.13.1
+torch>=2.6.0
 torchvision  # because torch version already specific, the right torchvision will be derived automatically
 torchaudio  # because torch version already specific, the right torchaudio will be derived automatically
-pytorchvideo @ git+https://github.com/facebookresearch/pytorchvideo.git@28fe037d212663c6a24f373b94cc5d478c8c1a1d
+pytorchvideo @ git+https://github.com/facebookresearch/pytorchvideo.git@6cdc929315aab1b5674b6dcf73b16ec99147735f
 timm==0.6.7
 ftfy
 regex
