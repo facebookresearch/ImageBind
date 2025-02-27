@@ -17,7 +17,7 @@ from typing import Callable, List, Optional
 import torch
 import torch.nn as nn
 import torch.utils.checkpoint as checkpoint
-from timm.models.layers import DropPath, trunc_normal_
+from timm.layers import DropPath, trunc_normal_
 
 
 class Attention(nn.Module):
