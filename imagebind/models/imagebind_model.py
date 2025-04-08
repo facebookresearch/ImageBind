@@ -501,6 +501,6 @@ def imagebind_huge(pretrained=False):
                 progress=True,
             )
 
-        model.load_state_dict(torch.load(".checkpoints/imagebind_huge.pth"))
+        model.load_state_dict(torch.load(".checkpoints/imagebind_huge.pth", weights_only=True))
 
     return model
