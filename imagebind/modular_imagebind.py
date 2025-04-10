@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import os
-from memory_profiler import profile
 from imagebind.models.imagebind_model import ImageBindModel, ModalityType
 from functools import partial
 
@@ -442,11 +441,9 @@ class ModularImageBind(ImageBindModel):
         # Load the updated state dict
         self.load_state_dict(current_state_dict, strict=False)
 
-        print(f"Loaded weights for {modality} modality")
-
     def forward(self, inputs):
         """
-        Forward pass for the model, using only active modalities.
+        Forward pass through the model.
 
         Args:
             inputs: Dictionary of inputs for different modalities
@@ -454,13 +451,15 @@ class ModularImageBind(ImageBindModel):
         Returns:
             Dictionary of outputs for the active modalities
         """
-        # Filter inputs to only use active modalities
-        filtered_inputs = {
-            k: v for k, v in inputs.items() if k in self.active_modalities
-        }
+        # Raise an error if input modalities are not in the active modalities
+        for modality in inputs.keys():
+            if modality not in self.active_modalities:
+                raise ValueError(
+                    f"Input modality {modality} not in active modalities: {self.active_modalities}"
+                )
 
         # Call the parent's forward method with filtered inputs
-        return super().forward(filtered_inputs)
+        return super().forward(inputs)
 
 
 def load_modular_imagebind_huge(
@@ -492,7 +491,6 @@ def load_modular_imagebind_huge(
     return model
 
 
-@profile
 def vision_text_example():
     from imagebind import data
 
@@ -529,7 +527,6 @@ def vision_text_example():
     )
 
 
-@profile
 def audio_example():
     from imagebind import data
 
@@ -562,7 +559,6 @@ def audio_example():
     )
 
 
-@profile
 def multimodal_example():
     from imagebind import data
 
@@ -605,7 +601,6 @@ def multimodal_example():
     )
 
 
-@profile
 def audio_thermal_example():
     from imagebind import data
 
@@ -641,7 +636,7 @@ def audio_thermal_example():
 
 
 if __name__ == "__main__":
-    # vision_text_example()
-    # audio_example()
+    vision_text_example()
+    audio_example()
     multimodal_example()
-    # audio_thermal_example()
+    audio_thermal_example()
