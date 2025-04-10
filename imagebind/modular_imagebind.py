@@ -491,151 +491,172 @@ def load_modular_imagebind_huge(
     return model
 
 
-def vision_text_example():
-    from imagebind import data
-
-    text_list = ["A dog.", "A car", "A bird"]
-    image_paths = [
-        ".assets/dog_image.jpg",
-        ".assets/car_image.jpg",
-        ".assets/bird_image.jpg",
-    ]
-
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-    # Example 1: Load only vision and text modalities
-    print("Loading Vision-Text model...")
-    model_vision_text = load_modular_imagebind_huge(
-        modalities=[ModalityType.VISION, ModalityType.TEXT]
-    )
-    model_vision_text.to(device)
-
-    inputs = {
-        ModalityType.VISION: data.load_and_transform_vision_data(image_paths, device),
-        ModalityType.TEXT: data.load_and_transform_text(text_list, device),
-    }
-
-    # Perform inference
-    with torch.no_grad():
-        embeddings = model_vision_text(inputs)
-
-    print(
-        "Vision x Text: ",
-        torch.softmax(
-            embeddings[ModalityType.VISION] @ embeddings[ModalityType.TEXT].T, dim=-1
-        ),
-    )
-
-
-def audio_example():
-    from imagebind import data
-
-    audio_paths = [
-        ".assets/dog_audio.wav",
-        ".assets/car_audio.wav",
-        ".assets/bird_audio.wav",
-    ]
-
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-    # Example 2: Load only audio modality
-    print("Loading Audio model...")
-    model_audio = load_modular_imagebind_huge(modalities=[ModalityType.AUDIO])
-    model_audio.to(device)
-
-    inputs = {
-        ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
-    }
-
-    # Perform inference
-    with torch.no_grad():
-        embeddings = model_audio(inputs)
-
-    print(
-        "Audio: ",
-        torch.softmax(
-            embeddings[ModalityType.AUDIO] @ embeddings[ModalityType.AUDIO].T, dim=-1
-        ),
-    )
-
-
-def multimodal_example():
-    from imagebind import data
-
-    text_list = ["A dog.", "A car", "A bird"]
-    image_paths = [
-        ".assets/dog_image.jpg",
-        ".assets/car_image.jpg",
-        ".assets/bird_image.jpg",
-    ]
-    audio_paths = [
-        ".assets/dog_audio.wav",
-        ".assets/car_audio.wav",
-        ".assets/bird_audio.wav",
-    ]
-
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-    # Example 3: Create a multimodal model with vision, text, and audio
-    print("Loading Multimodal model...")
-    model_multimodal = load_modular_imagebind_huge(
-        modalities=[ModalityType.VISION, ModalityType.TEXT, ModalityType.AUDIO]
-    )
-    model_multimodal.to(device)
-
-    inputs = {
-        ModalityType.VISION: data.load_and_transform_vision_data(image_paths, device),
-        ModalityType.TEXT: data.load_and_transform_text(text_list, device),
-        ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
-    }
-
-    # Perform inference
-    with torch.no_grad():
-        embeddings = model_multimodal(inputs)
-
-    print(
-        "Vision x Text: ",
-        torch.softmax(
-            embeddings[ModalityType.VISION] @ embeddings[ModalityType.TEXT].T, dim=-1
-        ),
-    )
-
-
-def audio_thermal_example():
-    from imagebind import data
-
-    audio_paths = [
-        ".assets/dog_audio.wav",
-        ".assets/car_audio.wav",
-        ".assets/bird_audio.wav",
-    ]
-
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-    # Example 4: Create a multimodal model with audio and thermal
-    print("Loading Audio-Thermal model...")
-    model_audio_thermal = load_modular_imagebind_huge(
-        modalities=[ModalityType.AUDIO, ModalityType.THERMAL]
-    )
-    model_audio_thermal.to(device)
-
-    inputs = {
-        ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
-    }
-
-    # Perform inference
-    with torch.no_grad():
-        embeddings = model_audio_thermal(inputs)
-
-    print(
-        "Audio x Thermal: ",
-        torch.softmax(
-            embeddings[ModalityType.AUDIO] @ embeddings[ModalityType.AUDIO].T, dim=-1
-        ),
-    )
-
-
 if __name__ == "__main__":
+    """Example usage of the ModularImageBind model with different modalities."""
+
+    def vision_text_example():
+        from imagebind import data
+
+        text_list = ["A dog.", "A car", "A bird"]
+        image_paths = [
+            ".assets/dog_image.jpg",
+            ".assets/car_image.jpg",
+            ".assets/bird_image.jpg",
+        ]
+
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+        # Example 1: Load only vision and text modalities
+        print("Loading Vision-Text model...")
+        model_vision_text = load_modular_imagebind_huge(
+            modalities=[ModalityType.VISION, ModalityType.TEXT]
+        )
+        model_vision_text.to(device)
+
+        inputs = {
+            ModalityType.VISION: data.load_and_transform_vision_data(
+                image_paths, device
+            ),
+            ModalityType.TEXT: data.load_and_transform_text(text_list, device),
+        }
+
+        # Perform inference
+        with torch.no_grad():
+            embeddings = model_vision_text(inputs)
+
+        print(
+            "Vision x Text: ",
+            torch.softmax(
+                embeddings[ModalityType.VISION] @ embeddings[ModalityType.TEXT].T,
+                dim=-1,
+            ),
+        )
+
+    def audio_example():
+        from imagebind import data
+
+        audio_paths = [
+            ".assets/dog_audio.wav",
+            ".assets/car_audio.wav",
+            ".assets/bird_audio.wav",
+        ]
+
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+        # Example 2: Load only audio modality
+        print("Loading Audio model...")
+        model_audio = load_modular_imagebind_huge(modalities=[ModalityType.AUDIO])
+        model_audio.to(device)
+
+        inputs = {
+            ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
+        }
+
+        # Perform inference
+        with torch.no_grad():
+            embeddings = model_audio(inputs)
+
+        print(
+            "Audio: ",
+            torch.softmax(
+                embeddings[ModalityType.AUDIO] @ embeddings[ModalityType.AUDIO].T,
+                dim=-1,
+            ),
+        )
+
+    def multimodal_example():
+        from imagebind import data
+
+        text_list = ["A dog.", "A car", "A bird"]
+        image_paths = [
+            ".assets/dog_image.jpg",
+            ".assets/car_image.jpg",
+            ".assets/bird_image.jpg",
+        ]
+        audio_paths = [
+            ".assets/dog_audio.wav",
+            ".assets/car_audio.wav",
+            ".assets/bird_audio.wav",
+        ]
+
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+        # Example 3: Create a multimodal model with vision, text, and audio
+        print("Loading Multimodal model...")
+        model_multimodal = load_modular_imagebind_huge(
+            modalities=[ModalityType.VISION, ModalityType.TEXT, ModalityType.AUDIO]
+        )
+        model_multimodal.to(device)
+
+        inputs = {
+            ModalityType.VISION: data.load_and_transform_vision_data(
+                image_paths, device
+            ),
+            ModalityType.TEXT: data.load_and_transform_text(text_list, device),
+            ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
+        }
+
+        # Perform inference
+        with torch.no_grad():
+            embeddings = model_multimodal(inputs)
+
+        print(
+            "Vision x Text: ",
+            torch.softmax(
+                embeddings[ModalityType.VISION] @ embeddings[ModalityType.TEXT].T,
+                dim=-1,
+            ),
+        )
+
+        print(
+            "Vision x Audio: ",
+            torch.softmax(
+                embeddings[ModalityType.VISION] @ embeddings[ModalityType.AUDIO].T,
+                dim=-1,
+            ),
+        )
+
+        print(
+            "Text x Audio: ",
+            torch.softmax(
+                embeddings[ModalityType.TEXT] @ embeddings[ModalityType.AUDIO].T, dim=-1
+            ),
+        )
+
+    def audio_thermal_example():
+        from imagebind import data
+
+        audio_paths = [
+            ".assets/dog_audio.wav",
+            ".assets/car_audio.wav",
+            ".assets/bird_audio.wav",
+        ]
+
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+        # Example 4: Create a multimodal model with audio and thermal
+        print("Loading Audio-Thermal model...")
+        model_audio_thermal = load_modular_imagebind_huge(
+            modalities=[ModalityType.AUDIO, ModalityType.THERMAL]
+        )
+        model_audio_thermal.to(device)
+
+        inputs = {
+            ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
+        }
+
+        # Perform inference
+        with torch.no_grad():
+            embeddings = model_audio_thermal(inputs)
+
+        print(
+            "Audio x Thermal: ",
+            torch.softmax(
+                embeddings[ModalityType.AUDIO] @ embeddings[ModalityType.AUDIO].T,
+                dim=-1,
+            ),
+        )
+
     vision_text_example()
     audio_example()
     multimodal_example()
