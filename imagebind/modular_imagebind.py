@@ -494,6 +494,18 @@ def load_modular_imagebind_huge(
 if __name__ == "__main__":
     """Example usage of the ModularImageBind model with different modalities."""
 
+    def memory_usage(model):
+        param_size = 0
+        for param in model.parameters():
+            param_size += param.nelement() * param.element_size()
+
+        buffer_size = 0
+        for buffer in model.buffers():
+            buffer_size += buffer.nelement() * buffer.element_size()
+
+        total_size = (param_size + buffer_size) / 1024**2
+        print(f"Model size: {total_size:.2f} MB")
+
     def vision_text_example():
         from imagebind import data
 
@@ -512,6 +524,8 @@ if __name__ == "__main__":
             modalities=[ModalityType.VISION, ModalityType.TEXT]
         )
         model_vision_text.to(device)
+
+        memory_usage(model_vision_text)
 
         inputs = {
             ModalityType.VISION: data.load_and_transform_vision_data(
@@ -547,6 +561,8 @@ if __name__ == "__main__":
         print("Loading Audio model...")
         model_audio = load_modular_imagebind_huge(modalities=[ModalityType.AUDIO])
         model_audio.to(device)
+
+        memory_usage(model_audio)
 
         inputs = {
             ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
@@ -587,6 +603,8 @@ if __name__ == "__main__":
             modalities=[ModalityType.VISION, ModalityType.TEXT, ModalityType.AUDIO]
         )
         model_multimodal.to(device)
+
+        memory_usage(model_multimodal)
 
         inputs = {
             ModalityType.VISION: data.load_and_transform_vision_data(
@@ -640,6 +658,8 @@ if __name__ == "__main__":
             modalities=[ModalityType.AUDIO, ModalityType.THERMAL]
         )
         model_audio_thermal.to(device)
+
+        memory_usage(model_audio_thermal)
 
         inputs = {
             ModalityType.AUDIO: data.load_and_transform_audio_data(audio_paths, device),
