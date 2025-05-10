@@ -6,11 +6,6 @@ timm
 ftfy
 regex
 einops
-fvcore
-eva-decord==0.6.1
 iopath
 numpy>=1.19
-matplotlib
 types-regex
-mayavi
-cartopy
