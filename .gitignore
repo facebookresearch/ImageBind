@@ -6,3 +6,4 @@ build/
 imagebind.egg-info
 .DS_Store
 venv/
+.checkpoints
