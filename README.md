@@ -129,6 +129,19 @@ print(
 
 ```
 
+### Usage with Poetry
+
+You can add ImageBind as a depedency of your poetry project using the add command:
+
+```bash
+poetry add git+https://github.com/facebookresearch/ImageBind.git
+```
+
+#### Troubleshooting
+
+- You may get some errors related to the `cartopy` dependency, to fix these errors, follow the instructions at <https://scitools.org.uk/cartopy/docs/latest/installing.html>.
+- You may need to copy the directory `bpe` to your project root to make the project work as intended
+
 ## Model card
 Please see the [model card](model_card.md) for details.
 
