@@ -17,7 +17,6 @@ from pytorchvideo import transforms as pv_transforms
 from pytorchvideo.data.clip_sampling import ConstantClipsPerVideoSampler
 from pytorchvideo.data.encoded_video import EncodedVideo
 from torchvision import transforms
-from torchvision.transforms import Normalize
 
 from imagebind.models.multimodal_preprocessors import SimpleTokenizer
 
@@ -285,6 +284,21 @@ class SpatialCrop(nn.Module):
             for spatial_idx in self.flipped_crops_to_ext:
                 res.append(uniform_crop(flipped_video, self.crop_size, spatial_idx)[0])
         return res
+
+
+class NormalizeVideo:
+    def __init__(self, mean, std, inplace=False):
+        self.mean = mean
+        self.std = std
+        self.inplace = inplace
+
+    def __call__(self, clip):
+        if not self.inplace:
+            clip = clip.clone()
+        mean = torch.as_tensor(self.mean, dtype=clip.dtype, device=clip.device)
+        std = torch.as_tensor(self.std, dtype=clip.dtype, device=clip.device)
+        clip.sub_(mean[:, None, None, None]).div_(std[:, None, None, None])
+        return clip
 
 
 def load_and_transform_video_data(
