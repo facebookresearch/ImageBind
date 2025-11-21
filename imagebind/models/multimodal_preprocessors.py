@@ -591,11 +591,11 @@ class SimpleTokenizer(object):
 
         sot_token = self.encoder["<|startoftext|>"]
         eot_token = self.encoder["<|endoftext|>"]
-        all_tokens = [[sot_token] + self.encode(text) + [eot_token] for text in texts]
+        all_tokens = [[sot_token] + self.encode(text) for text in texts]
         result = torch.zeros(len(all_tokens), context_length, dtype=torch.long)
 
         for i, tokens in enumerate(all_tokens):
-            tokens = tokens[:context_length]
+            tokens = tokens[:context_length - 1] + [eot_token]
             result[i, : len(tokens)] = torch.tensor(tokens)
 
         if len(result) == 1:
