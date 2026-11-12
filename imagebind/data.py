@@ -31,7 +31,8 @@ def return_bpe_path():
 
 def waveform2melspec(waveform, sample_rate, num_mel_bins, target_length):
     # Based on https://github.com/YuanGongND/ast/blob/d7d8b4b8e06cdaeb6c843cdb38794c1c7692234c/src/dataloader.py#L102
-    waveform -= waveform.mean()
+    # Mean-center a copy so a sliced view does not mutate the caller's waveform.
+    waveform = waveform - waveform.mean()
     fbank = torchaudio.compliance.kaldi.fbank(
         waveform,
         htk_compat=True,
@@ -49,7 +50,7 @@ def waveform2melspec(waveform, sample_rate, num_mel_bins, target_length):
     n_frames = fbank.size(1)
     p = target_length - n_frames
     # if p is too large (say >20%), flash a warning
-    if abs(p) / n_frames > 0.2:
+    if n_frames == 0 or abs(p) / n_frames > 0.2:
         logging.warning(
             "Large gap between audio n_frames(%d) and "
             "target_length (%d). Is the audio_target_length "
