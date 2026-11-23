@@ -1,5 +1,7 @@
 # ImageBind: One Embedding Space To Bind Them All
 
+[**简体中文**](https://github.com/facebookresearch/ImageBind/blob/main/README.zh.md) | **English**
+
 **[FAIR, Meta AI](https://ai.facebook.com/research/)** 
 
 Rohit Girdhar*,
